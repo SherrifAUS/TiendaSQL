@@ -54,21 +54,21 @@ begin;
 	('Portable SSD 1TB NVMe', 110.00, 60),
 	('Consola PS5', 666666, 696);
 	
-	insert into ventas(fechaVenta, cantidad, total, idCliente, idProducto)
-	values 
-	('2026-06-10 14:30:00', 1, 15000.50, 1, 1),
-	('2026-06-11 10:15:00', 2, 499.00, 2, 2),
-	('2026-06-12 18:45:00', 1, 89.00, 3, 3),
-	('2026-06-13 09:00:00', 3, 179.97, 4, 4),
-	('2026-06-14 20:10:00', 1, 110.00, 5, 5);
+insert into ventas(fechaVenta, cantidad, total, idCliente, idProducto)
+values 
+('2026-06-10 14:30:00', 1, 15000.50, 1, 1),
+('2026-06-11 10:15:00', 2, 259.98, 2, 2),
+('2026-06-12 18:45:00', 1, 249.50, 3, 3),
+('2026-06-13 09:00:00', 3, 267.00, 4, 4),
+('2026-06-14 20:10:00', 1, 110.00, 5, 5);
 	
 commit; 
 
 --PASO 5: Implementacion de un UPDATE masivo de precios con WHERE
-update productos set precio = precio * 1.15 where precio >= 240;
+update productos set precio = precio * 1.15 where descripcion like '%USB%';
 
 select * from productos p;
 --PASO 6: Implementacion de un DELETE de un registro de prueba con WHERE
-delete from productos where precio = (select max(precio) from productos p);
+delete from ventas where idVenta = 5;
 
 select * from productos p;
